@@ -1,0 +1,29 @@
+{
+  "name": "angular-bamieh-gcm",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Bamieh/angular-bamieh-gcm",
+  "authors": [
+    "Bamieh <ahmadbamieh@gmail.com>"
+  ],
+  "description": "GCM Notifications using angularJS",
+  "main": "angular-bamieh-gcm/bamieh-gcm.js",
+  "keywords": [
+    "Notifications",
+    "Google",
+    "GCM",
+    "Bamieh",
+    "Angular"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "public/app_pureJS.js"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3"
+  }
+}
