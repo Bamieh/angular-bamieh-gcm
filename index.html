@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="angular-bamieh-gcm">
+  <head>
+      <meta charset="utf-8">
+      <link rel="manifest" href="/public/manifest.json">
+  </head>
+  <body ng-controller="appController">
+   <h1>Push Demo</h1>
+
+
+   <button ng-click="sendRequest()" class="js-xhr-button">Send a Push to GCM via XHR</button>
+   <button ng-click="details()">Details</button>
+   <label for="toggleGcm">Toggle GCM</label>
+   <input name="toggleGcm" ng-model="checked" ng-disabled="disabled" type="checkbox" class="js-enable-push" value="Toggle">
+   <script src="/bower_components/angular/angular.min.js"></script>
+
+   <script src="/public/angular-bamieh-gcm/state.js"></script>
+   <script src="/public/angular-bamieh-gcm/registerWorker.config.js"></script>
+   <script src="/public/angular-bamieh-gcm/compatibility.config.js"></script>
+   <script src="/public/angular-bamieh-gcm/endpoint.js"></script>
+   <script src="/public/angular-bamieh-gcm/setupPermissions.js"></script>
+   <script src="/public/angular-bamieh-gcm/subscription.js"></script>
+   <script src="/public/angular-bamieh-gcm/controller.js"></script>
+   <script src="/public/angular-bamieh-gcm/bamieh-gcm.js"></script>
+  </body>
+</html>

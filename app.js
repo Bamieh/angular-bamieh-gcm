@@ -1,0 +1,25 @@
+var express = require('express'),
+    notifications = require('./notifications-module'),
+    app = express(),
+    server = require('http').Server(app),
+    bodyParser = require('body-parser');
+
+app.use(bodyParser.json());       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use('/public', express.static('public'));
+app.use('/bower_components', express.static('bower_components'));
+
+
+app.use('/notifications', notifications);
+app.use('/notifications', notifications);
+app.use("/", express.static(__dirname));
+app.get('/', function(req, res, next) {
+    // Just send the index.html for other files to support HTML5Mode
+    res.sendFile('index.html', { root: __dirname });
+});
+
+/* Port Listening */
+server.listen(9000, function() {
+  console.log('Listening on port %d', server.address().port);
+});
