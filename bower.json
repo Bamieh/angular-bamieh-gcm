@@ -6,7 +6,7 @@
     "Bamieh <ahmadbamieh@gmail.com>"
   ],
   "description": "GCM Notifications using angularJS",
-  "main": "angular-bamieh-gcm/bamieh-gcm.js",
+  "main": "dest/bamieh-gcm.min.js",
   "keywords": [
     "Notifications",
     "Google",
