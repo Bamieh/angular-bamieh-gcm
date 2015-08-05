@@ -17,7 +17,7 @@ function showNotification(title, body, icon, data) {
 }
 
 self.addEventListener('push', function(event) {
-  console.log('Received a push message', event);
+  console.log('Received a push message', event.data);
 
   // Since this is no payload data with the first version
   // of Push notifications, here we'll grab some data from

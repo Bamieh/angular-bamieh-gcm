@@ -19,11 +19,8 @@ router.post('/subscribe', function(req, res) {
   console.log('pushing');
   var sender = new gcm.Sender('AIzaSyAlTpdgA-V695rQicl-_WsMGxbXuJWCcQM');
   var registrationIds = [];
-  var message = new gcm.Message({
-    data: {
-        news: 'content'
-    }
-  });
+  var message = new gcm.Message();
+  message.addData('key1','testdarinodegcm');
   registrationIds.push(req.body.endpoint);
   sender.send(message, registrationIds, 4, function(err, result) {
     if(err) console.error(err);

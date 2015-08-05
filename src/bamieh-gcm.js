@@ -28,10 +28,8 @@
       if(bamiehGcmState.getDisabled() === true) return {checked: false, disabled: true};
       console.log('toogle:',bamiehGcmState.getChecked())
       if(bamiehGcmState.getChecked()===true) {
-        console.log('UNSUB');
         return this.unsubscribeDevice();
       } else {
-        console.log('SUB');
         return this.subscribeDevice();
       }
     }
