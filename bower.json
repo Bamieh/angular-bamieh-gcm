@@ -21,7 +21,6 @@
     "bower_components",
     "test",
     "tests",
-    "public/app_pureJS.js"
   ],
   "dependencies": {
     "angular": "~1.4.3"
