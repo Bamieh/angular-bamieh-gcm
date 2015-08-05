@@ -21,6 +21,6 @@ app.get('/', function(req, res, next) {
 });
 
 /* Port Listening */
-server.listen(9000, function() {
+server.listen(6000, function() {
   console.log('Listening on port %d', server.address().port);
 });

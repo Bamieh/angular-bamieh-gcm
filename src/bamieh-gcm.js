@@ -26,7 +26,6 @@
   function BamiehSubscribeDeviceService($q, bamiehGcmEndpoint, bamiehGcmState) {
     this.toggleDevice = function() {
       if(bamiehGcmState.getDisabled() === true) return {checked: false, disabled: true};
-      console.log('toogle:',bamiehGcmState.getChecked())
       if(bamiehGcmState.getChecked()===true) {
         return this.unsubscribeDevice();
       } else {
@@ -155,7 +154,7 @@
               });
           });
         }).catch(function(e) {
-          console.log('Ooops Unable to check the permission', e);
+          console.log('Unable to check the permission', e);
         });
     }
 
