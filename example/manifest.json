@@ -1,0 +1,13 @@
+{
+  "name": "Angular Bamieh GCM",
+  "short_name": "bamiehGcm",
+  "icons": [{
+        "src": "images/icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }],
+  "start_url": "example/index.html",
+  "display": "standalone",
+  "gcm_sender_id": "521285685851",
+  "gcm_user_visible_only": true
+}

@@ -1,0 +1,44 @@
+html,body {
+  background-color: #fff;
+  margin:0 !important;
+  padding:0 !important;
+  height:100%;
+  width:100%;
+}
+.example-container{
+  width:80%;
+  height:100%;
+  margin: 0 auto;
+  background-color: #fafafa;
+}
+.example-container h1{
+  margin-top:0;
+  padding-top:35px;
+  text-align: center;
+}
+.example-container hr {
+  width:50%;
+}
+.example-container h3 {
+  text-align: center;
+}
+.example-container .example-toggle {
+  display:block;
+  margin:0 auto;
+}
+.example-container .example-status {
+  background-color:#e6f1f6;
+  margin:35px auto;
+  min-height:60px;
+  padding:15px 0;
+  width:50%;
+  border-radius:10px;
+}
+.example-container .example-status > button,
+.example-container .example-status > div{
+  display: block;
+  margin-top:15px;
+  margin:auto;
+  text-align: center;
+  color:#4e575b;
+}

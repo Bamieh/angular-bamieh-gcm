@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="ngApp">
+  <head>
+      <meta charset="utf-8">
+      <link rel="manifest" href="/example/manifest.json">
+      <link rel="stylesheet" href="/example/example-style.css">
+  </head>
+  <body ng-controller="appController">
+    <div class="example-container">
+     <h1>Angular GCM</h1>
+     <hr></hr>
+     <h3>Example Notification</h3>
+     <button class="example-toggle" ng-disabled="disabled" ng-click="toggleDevice()">Enable/Disable Device</button>
+     <div class="example-status" ng-show="checked!='init'">
+       <div>Device is now {{checked?'Subscribed':'Unsubscribed'}}</div>
+       <button ng-show="checked===true" ng-disabled="!checked" ng-click="sendRequest()">Click Here to Send test Notification</button>
+     </div>
+   </div>
+   <script src="/bower_components/angular/angular.min.js"></script>
+   <script src="/src/bamieh-gcm.js"></script>
+   <script src="/example/app.js"></script>
+  </body>
+</html>
