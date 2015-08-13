@@ -5,7 +5,6 @@ function showNotification(title, body, icon, data) {
   var notificationOptions = {
     body: body,
     icon: icon ? icon : 'images/touch/chrome-touch-icon-192x192.png',
-    tag: 'simple-push-demo-notification',
     data: data
   };
   if (self.registration.showNotification) {
@@ -17,20 +16,15 @@ function showNotification(title, body, icon, data) {
 }
 
 self.addEventListener('push', function(event) {
-  console.log('Received a push message', event.data);
+  console.log('Received a push message', event);
 
   // Since this is no payload data with the first version
   // of Push notifications, here we'll grab some data from
   // an API and use it to populate a notification
 
         var title = 'New Notification';
-        var message = 'Message Description';
+        var message = 'From Service Worker';
         var icon = 'https://yamsafer.atlassian.net/secure/useravatar?ownerId=bamieh&avatarId=11705';
-        var notificationTag = 'simple-push-demo-notification';
-
-        var notificationFilter = {
-          tag: 'simple-push-demo-notification'
-        };
 
         var notificationData = {
           url: 'google.com'
@@ -63,4 +57,17 @@ self.addEventListener('push', function(event) {
         } else {
           return showNotification(title, message, icon, notificationData);
         }
+});
+
+
+self.addEventListener('notificationclick', function(event) {
+  console.log('On notification click: ', event);
+
+  if (Notification.prototype.hasOwnProperty('data')) {
+    console.log('Using Data', data);
+    var url = event.notification.data.url;
+    event.waitUntil(clients.openWindow(url));
+  } else {
+    event.waitUntil(clients.openWindow('http://localhost:1337/ahmad'));
+  }
 });

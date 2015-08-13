@@ -9,7 +9,8 @@ function appController($scope, $http,BamiehSubscribeDeviceService, bamiehGcmStat
 
   $scope.sendRequest = function() {
     var formData = {"endpoint": bamiehGcmEndpoint.getEndpoint()}
-    $http.post('http://localhost:6000/notifications/subscribe', formData)
+    console.log(bamiehGcmEndpoint.getEndpoint());
+    $http.post('http://localhost:1337/notifications/subscribe', formData)
   }
 
   $scope.toggleDevice = function() {

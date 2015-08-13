@@ -73,7 +73,7 @@
       }).then(function() {
         bamiehGcmState.setDisabled(false);
         bamiehGcmState.setChecked(true);
-        defer.resolve({checked: true, disabled: false});
+        defer.resolve({subscribed:true, checked: true, disabled: false});
       });
       return defer.promise;
     };
@@ -102,7 +102,7 @@
               console.log('Unsubscribtion error: ', e);
               bamiehGcmState.setDisabled(false);
               bamiehGcmState.setChecked(true);
-              defer.resolve({disabled: false, checked: true});
+              defer.resolve({subscribed:false, disabled: false, checked: true});
             });
           }.bind(this)).catch(function(e) {
             console.error('Error thrown while revoking push notifications. Most likely because push was never registered', e);

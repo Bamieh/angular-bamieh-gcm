@@ -16,12 +16,19 @@ router.use(function timeLog(req, res, next) {
 
 // define the home page route
 router.post('/subscribe', function(req, res) {
+  var endpoint = req.body.endpoint;
   console.log('pushing');
   var sender = new gcm.Sender('AIzaSyAlTpdgA-V695rQicl-_WsMGxbXuJWCcQM');
   var registrationIds = [];
   var message = new gcm.Message();
-  message.addData('key1','testdarinodegcm');
-  registrationIds.push(req.body.endpoint);
+  registrationIds.push(endpoint);
+
+  message.addNotification({
+    title: 'Alert!!!',
+    body: 'Abnormal data access',
+    icon: 'ic_launcher'
+  });
+  console.log(message);
   sender.send(message, registrationIds, 4, function(err, result) {
     if(err) console.error(err);
     else    console.log('success', result);
