@@ -8,8 +8,8 @@ function appController($scope, $http,BamiehSubscribeDeviceService, bamiehGcmStat
   $scope.checked = bamiehGcmState.getChecked();
 
   $scope.sendRequest = function() {
-    var formData = {"endpoint": bamiehGcmEndpoint.getEndpoint()}
-    console.log(bamiehGcmEndpoint.getEndpoint());
+    var formData = {"payload": bamiehGcmEndpoint.getSubscriptionPayload()};
+    console.log(formData);
     $http.post('http://localhost:1337/notifications/subscribe', formData)
   }
 
