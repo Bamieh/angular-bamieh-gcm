@@ -26,15 +26,14 @@ router.post('/subscribe', function(req, res) {
     webPush.sendNotification(payload.endpoint, {
         TTL: payload.ttl || 60,
         payload: JSON.stringify({
-          "body" : "This week’s edition is now available.",
-          "title" : "NewsMagazine.com",
-          "icon" : "new",
+          "body" : "Custom Body from server.",
+          "title" : "New Notification Arrived!",
+          "icon" : "https://yamsafer.atlassian.net/secure/useravatar?ownerId=bamieh&avatarId=11705",
         }),
         userPublicKey: payload.keys.p256dh,
         userAuth: payload.keys.auth,
     }).then(function(result) {
       console.log(result);
-      // res.end('Done');
       res.sendStatus(201);
     }).catch(function(err) {
       console.log('error: ', err);

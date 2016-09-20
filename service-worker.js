@@ -16,8 +16,10 @@
 // }
 
 self.addEventListener('push', function(event) {
-  var payload = event.data ? event.data.json() : { body: 'no payload'};
-  console.log('recieved push, with payload: ', payload);
+    console.log('event.data', event.data.text());
+  var payload = event.data  ? event.data.text() : "no payload";
+  payload = typeof payload === "string"? { "body": payload} : JSON.parse(payload);
+  console.log('recieved push, with payload ', payload);
 
   event.waitUntil(
     self.registration.showNotification('New Notification!', {
@@ -26,51 +28,6 @@ self.addEventListener('push', function(event) {
     })
   );
 });
-
-
-// self.addEventListener('push', function(event) {
-//   console.log('Received a push message', event);
-
-//   // Since this is no payload data with the first version
-//   // of Push notifications, here we'll grab some data from
-//   // an API and use it to populate a notification
-
-//         var title = 'New Notification';
-//         var message = 'From Service Worker';
-//         var icon = 'https://yamsafer.atlassian.net/secure/useravatar?ownerId=bamieh&avatarId=11705';
-
-//         var notificationData = {
-//           url: 'google.com'
-//         };
-
-//         if (self.registration.getNotifications) {
-//           return self.registration.getNotifications({})
-//             .then(function(notifications) {
-//               if (notifications && notifications.length > 0) {
-//                 // Start with one to account for the new notification
-//                 // we are adding
-//                 var notificationCount = 1;
-//                 for (var i = 0; i < notifications.length; i++) {
-//                   var existingNotification = notifications[i];
-//                   if (existingNotification.data &&
-//                     existingNotification.data.notificationCount) {
-//                     notificationCount += existingNotification.data.notificationCount;
-//                   } else {
-//                     notificationCount++;
-//                   }
-//                   existingNotification.close();
-//                 }
-//                 message = 'You have ' + notificationCount +
-//                   ' weather updates.';
-//                 notificationData.notificationCount = notificationCount;
-//               }
-
-//               return showNotification(title, message, icon, notificationData);
-//             });
-//         } else {
-//           return showNotification(title, message, icon, notificationData);
-//         }
-// });
 
 
 // self.addEventListener('notificationclick', function(event) {
@@ -84,9 +41,3 @@ self.addEventListener('push', function(event) {
 //     event.waitUntil(clients.openWindow('http://localhost:1337/ahmad'));
 //   }
 // });
-    // self.registration.showNotification('ServiceWorker Cookbook', {
-    //   lang: 'la',
-    //   body: 'Alea iacta est',
-    //   icon: 'caesar.jpg',
-    //   vibrate: [500, 100, 500],
-    // })

@@ -201,12 +201,11 @@
       };
     }
     return configPhase;
-    function getSubscriptionPayload() {return subscriptionPayload;}
+    function getSubscriptionPayload() { return subscriptionPayload; }
     function onPushSubscription(subscription) {
       bamiehGcmStateProvider.setDisabled(false);
       subscriptionPayload = JSON.parse(JSON.stringify(subscription));
       subscriptionPayload.endpointToken = subscription.endpoint.split("/").slice(-1)[0];
-      console.log('subscriptionPayload', subscriptionPayload);
     }
   }
 
