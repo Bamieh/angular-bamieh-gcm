@@ -1,8 +1,11 @@
 var express = require('express'),
     notifications = require('./notifications-module'),
     app = express(),
-    server = require('http').Server(app),
-    bodyParser = require('body-parser');
+    http = require('http'),
+    bodyParser = require('body-parser'),
+    fs = require('fs');
+
+var server = require('http').Server(app);
 
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -24,3 +27,4 @@ app.get('/', function(req, res, next) {
 server.listen(1337, function() {
   console.log('Listening on port %d', server.address().port);
 });
+

@@ -37,7 +37,7 @@
       bamiehGcmState.setDisabled(true);
       navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
         serviceWorkerRegistration.pushManager.subscribe({ userVisibleOnly: true })
-          .then(bamiehGcmEndpoint.setEndpoint)
+          .then(bamiehGcmEndpoint.setSubscriptionPayload)
           .catch(function(e) {
             if ('permissions' in navigator) {
               navigator.permissions.query({name: 'push', userVisibleOnly: true})
@@ -119,8 +119,7 @@
         $get: servicePhase
     };
     function servicePhase() {
-      return {
-      };
+      return {};
     }
     return configPhase;
     function initialiseState() {
@@ -171,6 +170,7 @@
       navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
         serviceWorkerRegistration.pushManager.getSubscription()
           .then(function(subscription) {
+            console.log('subscription', subscription)
             if (!subscription) {
               bamiehGcmStateProvider.setChecked(false);
               bamiehGcmStateProvider.setDisabled(false);
@@ -189,29 +189,25 @@
 
   bamiehGcmEndpoint.$inject = ['bamiehGcmStateProvider'];
   function bamiehGcmEndpoint(bamiehGcmStateProvider) {
-    var endpoint;
+    var subscriptionPayload;
     var configPhase = {
         onPushSubscription: onPushSubscription,
         $get: servicePhase
     };
     function servicePhase() {
       return {
-        getEndpoint: getEndpoint,
-        setEndpoint: onPushSubscription
+        getSubscriptionPayload: getSubscriptionPayload,
+        setSubscriptionPayload: onPushSubscription
       };
     }
     return configPhase;
-    function getEndpoint() {return endpoint;}
-    function onPushSubscription(pushSubscription) {
+    function getSubscriptionPayload() { return subscriptionPayload; }
+    function onPushSubscription(subscription) {
       bamiehGcmStateProvider.setDisabled(false);
-      if ('subscriptionId' in pushSubscription) {
-        endpoint = pushSubscription.subscriptionId;
-      }
+      subscriptionPayload = JSON.parse(JSON.stringify(subscription));
+      subscriptionPayload.endpointToken = subscription.endpoint.split("/").slice(-1)[0];
     }
   }
-
-
-
 
   function bamiehGcmState() {
     var checkedGmc = 'init';
